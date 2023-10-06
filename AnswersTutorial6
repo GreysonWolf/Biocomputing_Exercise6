@@ -1,0 +1,25 @@
+cat wages.csv | cut -d , -f 1,2 | grep "male" | sort -u -t , -k 1,2 > gender-yearsExperience.txt
+(For Part 1)
+
+Part 2:
+echo highest earner
+ cat wages.csv | cut -d, -f 1,2,4 | grep "male" | sort -r -t , -k 4 | head -1
+male,9,9.7991180794
+
+echo lowest earner
+cat wages.csv | cut -d , -f 1,2,4 | grep "male" | sort -t , -k 4 | head -1
+female,1,2.7746776749
+
+echo number of females in the top ten earners
+cat wages.csv | sort -r -t , -k 4 | head -11 | tail -10 | grep -o "female" | wc -l
+       2
+
+Part 3:
+echo difference between wages of high school and college graduates 
+lowest12=$(cat wages.csv | grep ",12," | sort -n -t ',' -k 4 | head -n 1 |
+cut -d, -f 4)
+lowest16=$(cat wages.csv | grep ",16," | sort -n -t ',' -k 4 | head -n 1 |
+cut -d, -f 4)
+echo "$lowest16 - $lowest12" | bc
+Effect of graduating college on minimum wage
+.1285564532
