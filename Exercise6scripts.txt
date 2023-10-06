@@ -14,5 +14,10 @@ cat wages.csv | cut -d , -f 1,2,4 | sort -t , -k 3 -n -r | head -n 1 > highestea
 
 cat wages.csv | cut -d , -f 1,2,4 | sort -t , -k 3 -n -r | tail -n 2 | head -n 1 > lowestearner.txt
 
+# This script will list the number of females in the top ten earners
+# Usage: bash topfemaleearners.sh
+
+cat wages.csv | sort -t , -k4 -n -r | head -n 10 | grep 'female' | wc -l > femalesintopten.txt
+
 
 
