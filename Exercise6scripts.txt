@@ -1,0 +1,6 @@
+# This script will sort wages.csv by gender and then by years of experience
+# usage: bash sortedexperience.sh
+
+cat wages.csv | cut -d , -f 1,2 | sort -t ,  -k 1,1d -k 2,2n | tr ',' ' ' > sortedexperience.txt
+
+
